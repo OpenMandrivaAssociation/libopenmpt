@@ -12,7 +12,7 @@ Url:		https://lib.openmpt.org/libopenmpt/
 Source0:	https://lib.openmpt.org/files/libopenmpt/src/%{name}-%{version}+release.autotools.tar.gz
 Source100:	libopenmpt.rpmlintrc
 # This one needs to be rediffed at every version update
-Patch0:		llibopenmpt-0.8.0-drop-release.autotools-from-package-version.patch
+Patch0:		libopenmpt-0.8.0-drop-release.autotools-from-package-version.patch
 BuildRequires:		chrpath
 BuildRequires:		doxygen
 BuildRequires:		graphviz
