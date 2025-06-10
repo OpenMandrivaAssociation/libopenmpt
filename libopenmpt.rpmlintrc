@@ -1,0 +1,2 @@
+# We always rebuild docs when updating
+addFilter("E: file-contains-date-and-time")
