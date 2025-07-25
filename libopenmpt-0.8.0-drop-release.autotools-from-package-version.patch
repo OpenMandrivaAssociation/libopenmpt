@@ -1,9 +1,0 @@
-diff -rupN libopenmpt-0.8.0+release.autotools.old/configure.ac libopenmpt-0.8.0+release.autotools/configure.ac
---- libopenmpt-0.8.0+release.autotools.old/configure.ac	2025-05-31 16:57:41.000000000 +0200
-+++ libopenmpt-0.8.0+release.autotools/configure.ac	2025-06-09 18:31:48.937863962 +0200
-@@ -1,4 +1,4 @@
--AC_INIT([libopenmpt], [0.8.0+release.autotools], [https://bugs.openmpt.org/], [libopenmpt], [https://lib.openmpt.org/])
-+AC_INIT([libopenmpt], [0.8.0], [https://bugs.openmpt.org/], [libopenmpt], [https://lib.openmpt.org/])
- AC_PREREQ([2.69])
- # we do want 2.70, but distributions are not ready yet
- #AC_PREREQ([2.70])
