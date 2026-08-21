@@ -4,7 +4,7 @@
 
 Summary:	A C/C++ library to decode tracker music module (MOD) files
 Name:		libopenmpt
-Version:	0.8.7
+Version:	0.8.9
 Release:	1
 License:	BSD
 Group:	Sound
@@ -12,7 +12,7 @@ Url:		https://lib.openmpt.org/libopenmpt/
 Source0:	https://lib.openmpt.org/files/libopenmpt/src/%{name}-%{version}+release.autotools.tar.gz
 Source100:	libopenmpt.rpmlintrc
 # This one needs to be rediffed at every version update
-# dropped (no longer applies): Patch0:		libopenmpt-0.8.7-drop-release.autotools-from-package-version.patch
+Patch0:		libopenmpt-0.8.9-drop-release.autotools-from-package-version.patch
 BuildRequires:		chrpath
 BuildRequires:		doxygen
 BuildRequires:		graphviz
@@ -46,7 +46,8 @@ A cross-platform C++ and C library to decode tracked music (MOD) files into a
 raw PCM audio stream. This package contains the actual library.
 
 %files -n %{libname}
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_libdir}/%{name}.so.%{major}*
 
 #-----------------------------------------------------------------------------
@@ -60,7 +61,7 @@ This is a cross-platform command-line based player for tracker music (MOD)
 module files. It uses %{libname}.
 
 %files -n openmpt123
-%doc LICENSE
+%license LICENSE
 %{_bindir}/openmpt123
 %{_mandir}/man1/openmpt123.1*
 
@@ -76,8 +77,8 @@ Provides:	openmpt-devel = %{EVRD}
 Files needed when building software using %{libname}.
 
 %files -n %{devname}
-%doc LICENSE examples
-%doc doxygen-doc/html
+%license LICENSE
+%doc examples doxygen-doc/html
 %{_includedir}/%{name}/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
@@ -85,8 +86,9 @@ Files needed when building software using %{libname}.
 #-----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n libopenmpt-0.8.7+release.autotools
+%autosetup -p1 -n libopenmpt-0.8.9+release.autotools
 
+# Fix EOL
 sed -i 's/\r$//' LICENSE
 
 # Drop useless hidden file
@@ -94,13 +96,14 @@ rm -f examples/.clang-format
 
 
 %build
+autoreconf -vfi
 %configure	--disable-static \
 			--with-sdl2 \
 			--enable-doxygen-dot \
 			--enable-doxygen-man
 %make_build
 
-# Build docs
+# Build devel docs
 doxygen -u Doxyfile
 doxygen Doxyfile
 
@@ -108,6 +111,7 @@ doxygen Doxyfile
 %install
 %make_install
 
+# Drop rpath
 chrpath --delete %{buildroot}%{_bindir}/openmpt123
 
 # We pick up docs with our macro
