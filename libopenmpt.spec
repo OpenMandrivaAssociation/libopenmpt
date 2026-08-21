@@ -3,9 +3,9 @@
 %define		devname	%mklibname openmpt -d
 
 Summary:	A C/C++ library to decode tracker music module (MOD) files
-Name:		libopenmpt
+Name:	libopenmpt
 Version:	0.8.9
-Release:	1
+Release:		1
 License:	BSD
 Group:	Sound
 Url:		https://lib.openmpt.org/libopenmpt/
