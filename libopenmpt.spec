@@ -13,9 +13,14 @@ Source0:	https://lib.openmpt.org/files/libopenmpt/src/%{name}-%{version}+release
 Source100:	libopenmpt.rpmlintrc
 # This one needs to be rediffed at every version update
 Patch0:		libopenmpt-0.8.9-drop-release.autotools-from-package-version.patch
+BuildRequires:		autoconf
+BuildRequires:		automake
 BuildRequires:		chrpath
 BuildRequires:		doxygen
 BuildRequires:		graphviz
+BuildRequires:		libtool-base
+BuildRequires:		make
+BuildRequires:		slibtool
 BuildRequires:		pkgconfig(alsa)
 BuildRequires:		pkgconfig(flac) >= 1.3.0
 BuildRequires:		pkgconfig(libmpg123) >= 1.14.0
